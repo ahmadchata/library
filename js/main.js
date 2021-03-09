@@ -1,11 +1,38 @@
 let myLibrary = [];
 const booksContainer = document.getElementById('books-container')
-const addBookForm = document.getElementById('addBookForm');
+const formSubmit = document.querySelector('#addBookForm button')
 const books = document.querySelectorAll('[data-id]')
+const addBookForm = document.getElementById('addBookForm');
+function handleAddBookForm (e) {
+  e.preventDefault()
+  
+  const chk_status = addBookForm.checkValidity();
+  addBookForm.reportValidity();
+
+  if(chk_status){
+    const formdata = new FormData(addBookForm)
+    const json = {}
+
+    formdata.forEach((v,k)=>json[k]=v)
+
+    if([...formdata.entries()].length == 3){
+      json["read"] = false
+    }else{
+      json["read"] = true
+    }
+    const { bookName, authorName, numPages, read } = json
+    addBookToLibrary(bookName, authorName, numPages, read)
+  }
+
+}
+formSubmit.addEventListener('click',(e)=>{
+  handleAddBookForm(e)
+})
+
 function showAddBookForm() {
   addBookForm.classList.toggle('d-none')
 }
-function Book(title, author, pages, read, id = myLibrary.length + 1) {
+function Book(title, author, pages, read, id = Date.now()) {
   this.title = title
   this.author = author
   this.pages = pages
@@ -18,6 +45,7 @@ function Book(title, author, pages, read, id = myLibrary.length + 1) {
 function addBookToLibrary(title, author, pages, read) {
   const book = new Book(title, author, pages, read)
   myLibrary.push(book)
+  displayBook(book)
 }
 function deleteBook(event){
   const book = event.target.parentElement.parentElement
@@ -26,13 +54,6 @@ function deleteBook(event){
   book.remove()
 }
 
-addBookToLibrary('The Dark Knight', 'Bruce Wayne', 20, true)
-addBookToLibrary('Buttons', 'Victoria', 15, false)
-addBookToLibrary('Sandals', 'Mark', 10, true)
-
-myLibrary.forEach((book) => {
-  displayBook(book)
-})
 
 function displayBook(book) {
 

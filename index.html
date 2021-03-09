@@ -15,22 +15,22 @@
   
 <div class="container">
   <button class="btn btn-primary" onclick="showAddBookForm()"> Add book </button>
-  <form class="d-none" id="addBookForm">
+  <form class="d-none" id="addBookForm" >
     <div class="form-group">
       <label for="exampleInputEmail1">Name of the book</label>
-      <input type="text" class="form-control" id="bookName" aria-describedby="nameHelp" placeholder="Enter book name">
+      <input name="bookName" type="text" class="form-control" id="bookName" aria-describedby="nameHelp" placeholder="Enter book name" required>
       <small id="bookHelp" class="form-text text-muted">We dont judge</small>
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Author</label>
-      <input type="text" class="form-control" id="bookAuthor" placeholder="Author">
+      <input name="authorName" type="text" class="form-control" id="bookAuthor" placeholder="Author" required>
     </div>
     <div class="form-group">
       <label for="exampleInputEmail1">Number of pages</label>
-      <input type="number" class="form-control" id="numberName" aria-describedby="numberHelp" placeholder="Enter number of pages">
+      <input name="numPages" type="number" class="form-control" id="numberName" aria-describedby="numberHelp" placeholder="Enter number of pages" required>
     </div>
     <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+      <input name="read" type="checkbox" class="form-check-input" id="exampleCheck1">
       <label class="form-check-label" for="exampleCheck1">Read?</label>
     </div>
     <button type="submit" class="btn btn-primary">Add +</button>
@@ -38,7 +38,7 @@
 </div>
 
   <div class="container">
-    <div class="container d-flex" id="books-container">
+    <div class="container d-flex flex-wrap" id="books-container">
 
     </div>
   </div>
