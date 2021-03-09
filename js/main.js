@@ -20,7 +20,10 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(book)
 }
 function deleteBook(event){
-  console.log(event.target)
+  const book = event.target.parentElement.parentElement
+  const index = book.dataset.id.split('-')[1] - 1
+  myLibrary.splice(index, 1);
+  book.remove()
 }
 
 addBookToLibrary('The Dark Knight', 'Bruce Wayne', 20, true)
