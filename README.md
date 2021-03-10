@@ -11,7 +11,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://dipeshtwis.github.io/Library/ )
+[Live Demo Link](https://ahmadchata.github.io/library/)
 
 ## Getting Started
 
