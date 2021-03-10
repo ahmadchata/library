@@ -55,9 +55,10 @@ function displayBook(book) {
       deleteBook(e);
     });
   });
-  const rd = document.querySelector('#read');
-  rd.addEventListener('click', (e) => {
-    toggleStatus(e);
+  document.querySelectorAll('#read').forEach((rd) => {
+    rd.addEventListener('click', (e) => {
+      toggleStatus(e);
+    });
   });
 }
 function addBookToLibrary(title, author, pages, read) {
