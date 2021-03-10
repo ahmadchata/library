@@ -22,6 +22,7 @@ function handleAddBookForm (e) {
     }
     const { bookName, authorName, numPages, read } = json
     addBookToLibrary(bookName, authorName, numPages, read)
+    addBookForm.reset()
   }
 
 }
@@ -54,6 +55,12 @@ function deleteBook(event){
   book.remove()
 }
 
+function readStatus(event) {
+  const book = event.target.parentElement.parentElement
+  const index = book.dataset.read.
+
+}
+
 
 function displayBook(book) {
 
@@ -63,8 +70,10 @@ function displayBook(book) {
       <h5 class="card-title">${book.title}</h5>
       <h6 class="card-subtitle mb-2 text-muted">${book.author}</h6>
       <p class="card-text">${book.pages}</p>
+      <p class="card-text">${book.read ? "Read" : "Unread"}</p>
       
       <button class="btn btn-danger">Remove</button>
+      <button class="btn btn-success" id="read">Read</button>
     </div>
   </div>
 `
@@ -74,5 +83,10 @@ function displayBook(book) {
       deleteBook(e)
     })
   })
+  const rd = document.querySelector('#read')
+  rd.addEventListener('click', (e) => {
+    console.log(e.target)
+  })
+  
 
 }
