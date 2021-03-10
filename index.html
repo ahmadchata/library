@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <title>Document</title>
+</head>
+
+<body>
+  
+<div class="container">
+  <button class="btn btn-primary mx-auto mt-4" onclick="showAddBookForm()"> Add book </button>
+  <form class="d-none" id="addBookForm" >
+    <div class="form-group">
+      <label for="exampleInputEmail1">Name of the book</label>
+      <input name="bookName" type="text" class="form-control" id="bookName" aria-describedby="nameHelp" placeholder="Enter book name" required>
+      <small id="bookHelp" class="form-text text-muted">We dont judge</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Author</label>
+      <input name="authorName" type="text" class="form-control" id="bookAuthor" placeholder="Author" required>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Number of pages</label>
+      <input name="numPages" type="number" class="form-control" id="numberName" aria-describedby="numberHelp" placeholder="Enter number of pages" required>
+    </div>
+    <div class="form-check">
+      <input name="read" type="checkbox" class="form-check-input" id="exampleCheck1">
+      <label class="form-check-label" for="exampleCheck1">Read?</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Add +</button>
+  </form>
+</div>
+
+  <div class="container">
+    <div class="container d-flex flex-wrap" id="books-container">
+
+    </div>
+  </div>
+
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
