@@ -3,13 +3,20 @@ const booksContainer = document.getElementById('books-container');
 const formSubmit = document.querySelector('#addBookForm button');
 const addBookForm = document.getElementById('addBookForm');
 
-function Book(title, author, pages, read, id = Date.now()) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.id = id;
+class Book {
+  constructor(title, author, pages, read, id = Date.now()) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.id = id;
+  }
+
+  changeReadStatus() {
+    this.read = !this.read;
+  }
 }
+
 function toggleStatus(event) {
   const book = event.target.parentElement.parentElement;
   const id = book.dataset.id.split('-')[1];
@@ -19,7 +26,7 @@ function toggleStatus(event) {
       index = idx;
     }
   });
-  myLibrary[index].read = !myLibrary[index].read;
+  myLibrary[index].changeReadStatus();
   const readEl = document.querySelector(`[data-id = card-${id}] p.read-status`);
   readEl.innerText = readEl.innerText === 'Read' ? 'Unread' : 'Read';
 }
