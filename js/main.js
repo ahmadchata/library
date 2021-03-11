@@ -3,13 +3,16 @@ const booksContainer = document.getElementById('books-container');
 const formSubmit = document.querySelector('#addBookForm button');
 const addBookForm = document.getElementById('addBookForm');
 
-function Book(title, author, pages, read, id = Date.now()) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.id = id;
-}
+const Book = (title, author, pages, read, id = Date.now()) => ({
+  title, author, pages, read, id,
+});
+// function Book(title, author, pages, read, id = Date.now()) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.read = read;
+//   this.id = id;
+// }
 function toggleStatus(event) {
   const book = event.target.parentElement.parentElement;
   const id = book.dataset.id.split('-')[1];
@@ -62,7 +65,7 @@ function displayBook(book) {
   });
 }
 function addBookToLibrary(title, author, pages, read) {
-  const book = new Book(title, author, pages, read);
+  const book = Book(title, author, pages, read);
   myLibrary.push(book);
   displayBook(book);
 }
